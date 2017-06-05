@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
-    <groupId>com.mycompany</groupId>
-    <artifactId>JogoDaForca</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-     <dependencies>
-=======
     <groupId>br.edu.ifpe</groupId>
     <artifactId>JogoDaForca</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
->>>>>>> f2f989e9f34c50fb93c4f86d3e721440c601e8ff
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-<<<<<<< HEAD
-     </dependencies>
-    <name>JogoDaForca</name>
-=======
     </dependencies>
   
     <properties>
@@ -35,5 +18,4 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
->>>>>>> f2f989e9f34c50fb93c4f86d3e721440c601e8ff
 </project>
