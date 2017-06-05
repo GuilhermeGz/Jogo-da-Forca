@@ -70,7 +70,7 @@ public class Jogo {
                 System.out.print("_ ");
             }
         }
-        
+
     }
 
     public boolean verificarLetra(char pl) {
