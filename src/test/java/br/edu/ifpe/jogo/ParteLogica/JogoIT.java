@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author 20141d12gr0114
+ * @author Guilherme Silva
  */
 public class JogoIT {
 

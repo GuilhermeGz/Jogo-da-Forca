@@ -6,7 +6,7 @@ public class Jogando {
 
     public static void main(String[] args) {
         Jogo j = new Jogo();
-        j.inicializandoJogo();
+        j.inicializarJogo();
 
     }
 
