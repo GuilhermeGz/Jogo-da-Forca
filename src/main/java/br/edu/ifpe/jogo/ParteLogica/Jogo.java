@@ -33,13 +33,12 @@ public class Jogo {
                 boolean result;
                 do {
                     criarCampo();
-
                     System.out.println("\nEscolha uma letra");
                     System.out.println("Erros :" + erros);
                     char letra = sc.next().toUpperCase().charAt(0);
-                    result = realizarEscolhaPalavra(letra);
+                    result = verificarLetra(letra);
 
-                } while (result != false);
+                } while (result == true);
 
                 if (acertos == letras.length) {
                     System.out.println("\nVitoria\n");
@@ -48,13 +47,15 @@ public class Jogo {
                 }
 
             } else if (opcao == 2) {
-                realizandoAdicaoPalavra(sc.next());
+                System.out.println("Digite a palavra");
+                System.out.println(bd.adicionarPalavra(sc.next()));
             } else if (opcao == 3) {
-                remocaoPalavra(sc.next());
-            } else if (opcao != 5) {
+                System.out.println("Digite a palavra");
+                bd.removerPalavra(sc.next());
+            } else if (opcao == 4) {
                 mostrarLista();
             } else if (opcao != 5) {
-                System.out.println("Valor inapropriado");
+                System.out.println("\nValor inapropriadoz\n");
             }
 
         } while (opcao != 5);
@@ -69,39 +70,29 @@ public class Jogo {
                 System.out.print("_ ");
             }
         }
-
+        
     }
 
-    public boolean realizarEscolhaPalavra(char pl) {
+    public boolean verificarLetra(char pl) {
         char letra = pl;
-        int cont = 0;
+        boolean cont = false;
 
         for (int i = 0; i < letras.length; i++) {
             if (letra == letras[i]) {
                 if (marcasao[i] == 1) {
-                    System.out.println("Escolha outra letra");
-                    cont = 1;
+                    System.out.println("\nEscolha outra letra\n");
+                    cont = true;
                 } else {
                     marcasao[i] = 1;
                     acertos++;
-                    cont = 1;
+                    cont = true;
                 }
             }
         }
-        if (cont != 1) {
+        if (cont == false) {
             erros++;
         }
         return acertos < letras.length && erros < 7;
-    }
-
-    public void realizandoAdicaoPalavra(String pl) {
-        System.out.println("Digite a palavra");
-        System.out.println(bd.adicionarPalavra(pl));
-    }
-
-    public void remocaoPalavra(String pl) {
-        System.out.println("Digite a palavra");
-        System.out.println(bd.removerPalavra(pl));
     }
 
     public void mostrarLista() {
