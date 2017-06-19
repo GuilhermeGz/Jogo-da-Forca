@@ -102,7 +102,7 @@ public class Jogo {
                     result = verificarLetraRepetida(letra);
 
                 } while (result == true);
-                System.out.println(verificarRsultadoDaPartida(acertos));
+                System.out.println(verificarRsultadoDaPartida(acertos, letras));
 
             } else if (getOpcao() == 2) {
                 System.out.println("Digite a palavra");
@@ -154,8 +154,8 @@ public class Jogo {
         return acertos < letras.length && erros < 7;
     }
 
-    public String verificarRsultadoDaPartida(int acertos) {
-        if (acertos == letras.length) {
+    public String verificarRsultadoDaPartida(int acertos, char[] lista) {
+        if (acertos == lista.length) {
             return "\nVitoria\n";
         } else {
             return "\nDerrota\n";

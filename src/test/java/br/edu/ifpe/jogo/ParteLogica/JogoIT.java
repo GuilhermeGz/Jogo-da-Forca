@@ -30,6 +30,19 @@ public class JogoIT {
         String result = jforca.criarCampo(letrasTest, marcador);
         Assert.assertEquals("_ E _ _ E ", result);
     }
+    
+    @Test
+    public void verificarResultadoDaPartidaComVitoria() {
+        char[] letrasTest = "12345".toCharArray();
+        String result = jforca.verificarRsultadoDaPartida(5, letrasTest);
+        Assert.assertEquals("\nVitoria\n", result);
+    }
 
+    @Test
+    public void verificarResultadoDaPartidaComDerrota() {
+        char[] letrasTest = "12345".toCharArray();
+        String result = jforca.verificarRsultadoDaPartida(4, letrasTest);
+        Assert.assertEquals("\nDerrota\n", result);
+    }
    
 }
