@@ -108,13 +108,17 @@ public class Jogo {
     }
 
     public boolean verificarAcerto(char letra) {
+        boolean cont = false;
         for (int i = 0; i < letras.length; i++) {
             if (letra == letras[i]) {
                 acertos++;
-                return acertos < letras.length && erros < 7;
+                marcasao[i] = 1;
+                cont = true;
             }
         }
+        if(cont != true){
         erros++;
+        }
         return acertos < letras.length && erros < 7;
     }
 
