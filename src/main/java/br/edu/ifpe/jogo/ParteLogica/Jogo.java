@@ -1,17 +1,19 @@
 package br.edu.ifpe.jogo.ParteLogica;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Jogo {
 
-    int erros ;
-    int acertos ;
+    int erros;
+    int acertos;
     Random gerador = new Random();
     BancoDePalavras bd;
     int opcao;
     char[] letras;
     int[] marcasao;
+    ArrayList<Character> letrasRepetidas;
 
     public int getErros() {
         return erros;
@@ -43,29 +45,32 @@ public class Jogo {
 
     public void inicializarJogo() {
         Scanner sc = new Scanner(System.in);
-        int posicao = gerador.nextInt(bd.getPalavras().size());
-        String palavra = bd.getPalavras().get(posicao);
-        letras = palavra.toCharArray();
-        marcasao = new int[letras.length];
-
         do {
+            int posicao = gerador.nextInt(bd.getPalavras().size());
+            String palavra = bd.getPalavras().get(posicao);
+            letras = palavra.toCharArray();
+            marcasao = new int[letras.length];
+            letrasRepetidas = new ArrayList<Character>();
+
             System.out.println("1 - Jogar\n2 - Adicionar palavra\n3 - Remover palavra"
                     + "\n4 - Mostrar lista de palvras\n5 - Sair do jogo");
 
             setOpcao(sc.nextInt());
-            
+
             if (getOpcao() == 1) {
                 boolean result;
+                erros = 0;
+                acertos = 0;
+
                 do {
                     System.out.println(criarCampo());
                     System.out.println("\nEscolha uma letra");
                     System.out.println("Erros :" + getErros());
                     char letra = sc.next().toUpperCase().charAt(0);
-                    result = verificarLetra(letra);
+                    result = verificarLetraRepetida(letra);
 
                 } while (result == true);
-
-                System.out.println(verificarRsultadoPartida(acertos));
+                System.out.println(verificarRsultadoDaPartida(acertos));
 
             } else if (getOpcao() == 2) {
                 System.out.println("Digite a palavra");
@@ -94,25 +99,22 @@ public class Jogo {
         return campo;
     }
 
-    public boolean verificarLetra(char pl) {
-        char letra = pl;
-        boolean cont = false;
+    public boolean verificarLetraRepetida(char pl) {
+        if (letrasRepetidas.contains(pl)) {
+            return true;
+        }
+        letrasRepetidas.add(pl);
+        return verificarAcerto(pl);
+    }
 
+    public boolean verificarAcerto(char letra) {
         for (int i = 0; i < letras.length; i++) {
             if (letra == letras[i]) {
-                if (marcasao[i] == 1) {
-                    System.out.println("\nEscolha outra letra\n");
-                    cont = true;
-                } else {
-                    marcasao[i] = 1;
-                    acertos++;
-                    cont = true;
-                }
+                acertos++;
+                return acertos < letras.length && erros < 7;
             }
         }
-        if (cont == false) {
-            erros++;
-        }
+        erros++;
         return acertos < letras.length && erros < 7;
     }
 
@@ -124,12 +126,12 @@ public class Jogo {
         return lista;
     }
 
-    public String verificarRsultadoPartida(int acertos) {
+    public String verificarRsultadoDaPartida(int acertos) {
         if (acertos == letras.length) {
             return "\nVitoria\n";
         } else {
             return "\nDerrota\n";
         }
     }
-    
+
 }
