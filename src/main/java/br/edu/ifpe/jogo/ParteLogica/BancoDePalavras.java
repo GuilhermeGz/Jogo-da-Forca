@@ -20,6 +20,14 @@ public class BancoDePalavras {
         Palavras.add("BOLACHA");
     }
 
+    public ArrayList<String> getPalavras() {
+        return Palavras;
+    }
+
+    public void setPalavras(ArrayList<String> palavras) {
+        Palavras = palavras;
+    }
+
     public String adicionarPalavra(String palavra) {
         palavra = palavra.toUpperCase();
         if (Palavras.contains(palavra) == true) {
@@ -39,11 +47,12 @@ public class BancoDePalavras {
         }
     }
 
-    public ArrayList<String> getPalavras() {
-        return Palavras;
+    public String mostrarLista() {
+        String lista = new String();
+        for (int i = 0; i < Palavras.size(); i++) {
+            lista += " " + Palavras.get(i);
+        }
+        return lista;
     }
 
-    public void setPalavras(ArrayList<String> palavras) {
-        Palavras = palavras;
-    }
 }

@@ -111,7 +111,7 @@ public class Jogo {
                 System.out.println("Digite a palavra");
                 bd.removerPalavra(sc.next());
             } else if (getOpcao() == 4) {
-                System.out.println(mostrarLista());
+                System.out.println(bd.mostrarLista());
             } else if (getOpcao() != 5) {
                 System.out.println("\nValor inapropriadoz\n");
             }
@@ -152,14 +152,6 @@ public class Jogo {
         erros++;
         }
         return acertos < letras.length && erros < 7;
-    }
-
-    public String mostrarLista() {
-        String lista = new String();
-        for (int i = 0; i < bd.Palavras.size(); i++) {
-            lista += " " + bd.getPalavras().get(i);
-        }
-        return lista;
     }
 
     public String verificarRsultadoDaPartida(int acertos) {
