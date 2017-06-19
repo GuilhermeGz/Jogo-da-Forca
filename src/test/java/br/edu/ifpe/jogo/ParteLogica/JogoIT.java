@@ -61,6 +61,28 @@ public class JogoIT {
         boolean result = jforca.verificarRepeticaoDeLetra('E', letrasTest);
     }
     
+    @Test
+    public void verificarAcertoComAcertosMenoresDoQueNecessarioParaVitoria() {
+        char[] letrasTest = "LEITE".toCharArray();
+        int [] marcador = new int [letrasTest.length];
+        jforca.setMarcasao(marcador);
+        jforca.setLetras(letrasTest);
+        jforca.setErros(0);
+        jforca.setAcertos(0);
+        boolean result = jforca.verificarAcerto('L');
+        Assert.assertEquals(true, result);
+    }
     
+    @Test
+    public void verificarAcertoComAcertosNecessariosParaVitoria() {
+        char[] letrasTest = "LEITE".toCharArray();
+        int [] marcador = new int [letrasTest.length];
+        jforca.setMarcasao(marcador);
+        jforca.setLetras(letrasTest);
+        jforca.setErros(0);
+        jforca.setAcertos(4);
+        boolean result = jforca.verificarAcerto('L');
+        Assert.assertEquals(false, result);
+    }
    
 }
