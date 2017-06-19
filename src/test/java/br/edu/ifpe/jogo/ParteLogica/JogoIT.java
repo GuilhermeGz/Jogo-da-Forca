@@ -1,5 +1,6 @@
 package br.edu.ifpe.jogo.ParteLogica;
 
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -44,5 +45,22 @@ public class JogoIT {
         String result = jforca.verificarRsultadoDaPartida(4, letrasTest);
         Assert.assertEquals("\nDerrota\n", result);
     }
+    
+    @Test
+    public void verificarRepeticaoDeLetraComLetraRepetida() {
+        ArrayList <Character> letrasTest = new ArrayList<Character>();
+        letrasTest.add('A');
+        boolean result = jforca.verificarRepeticaoDeLetra('A', letrasTest);
+        Assert.assertEquals(true, result);
+    }
+    
+    @Test(expected=java.lang.NullPointerException.class)
+    public void verificarRepeticaoDeLetraSemLetraRepetida() {
+        ArrayList <Character> letrasTest = new ArrayList<Character>();
+        letrasTest.add('A');
+        boolean result = jforca.verificarRepeticaoDeLetra('E', letrasTest);
+    }
+    
+    
    
 }

@@ -99,7 +99,7 @@ public class Jogo {
                     System.out.println("\nEscolha uma letra");
                     System.out.println("Erros :" + getErros());
                     char letra = sc.next().toUpperCase().charAt(0);
-                    result = verificarLetraRepetida(letra);
+                    result = verificarRepeticaoDeLetra(letra, letrasRepetidas);
 
                 } while (result == true);
                 System.out.println(verificarRsultadoDaPartida(acertos, letras));
@@ -131,7 +131,7 @@ public class Jogo {
         return campo;
     }
 
-    public boolean verificarLetraRepetida(char pl) {
+    public boolean verificarRepeticaoDeLetra(char pl, ArrayList<Character> letrasRepetidas) {
         if (letrasRepetidas.contains(pl)) {
             return true;
         }
