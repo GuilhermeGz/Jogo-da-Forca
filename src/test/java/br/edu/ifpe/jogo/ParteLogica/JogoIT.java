@@ -1,12 +1,7 @@
 package br.edu.ifpe.jogo.ParteLogica;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * @author Guilherme Silva
@@ -18,7 +13,22 @@ public class JogoIT {
     public JogoIT() {
     }
 
+    @Test
+    public void criarCampoSemAcerto() {
+        char[] letrasTest = "LEITE".toCharArray();
+        int [] marcador = new int [letrasTest.length];
+        String result = jforca.criarCampo(letrasTest,marcador);
+        Assert.assertEquals("_ _ _ _ _ ", result);
+    }
     
- 
+     @Test
+    public void criarCampoComAcerto() {
+        char[] letrasTest = "LEITE".toCharArray();
+        int [] marcador = new int [letrasTest.length];
+        marcador[1] = 1;
+        marcador[4] = 1;
+        String result = jforca.criarCampo(letrasTest,marcador);
+        Assert.assertEquals("_ E _ _ E ", result);
+    }
 
 }

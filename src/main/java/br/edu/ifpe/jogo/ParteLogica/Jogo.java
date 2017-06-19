@@ -15,6 +15,38 @@ public class Jogo {
     int[] marcasao;
     ArrayList<Character> letrasRepetidas;
 
+     public BancoDePalavras getBd() {
+        return bd;
+    }
+
+    public void setBd(BancoDePalavras bd) {
+        this.bd = bd;
+    }
+
+    public char[] getLetras() {
+        return letras;
+    }
+
+    public void setLetras(char[] letras) {
+        this.letras = letras;
+    }
+
+    public int[] getMarcasao() {
+        return marcasao;
+    }
+
+    public void setMarcasao(int[] marcasao) {
+        this.marcasao = marcasao;
+    }
+
+    public ArrayList<Character> getLetrasRepetidas() {
+        return letrasRepetidas;
+    }
+
+    public void setLetrasRepetidas(ArrayList<Character> letrasRepetidas) {
+        this.letrasRepetidas = letrasRepetidas;
+    }
+    
     public int getErros() {
         return erros;
     }
@@ -63,7 +95,7 @@ public class Jogo {
                 acertos = 0;
 
                 do {
-                    System.out.println(criarCampo());
+                    System.out.println(criarCampo(letras,marcasao));
                     System.out.println("\nEscolha uma letra");
                     System.out.println("Erros :" + getErros());
                     char letra = sc.next().toUpperCase().charAt(0);
@@ -87,11 +119,11 @@ public class Jogo {
         } while (getOpcao() != 5);
     }
 
-    public String criarCampo() {
+    public String criarCampo(char[] lista, int[] marcador) {
         String campo = new String();
-        for (int i = 0; i < letras.length; i++) {
-            if (marcasao[i] == 1) {
-                campo += letras[i] + " ";
+        for (int i = 0; i < lista.length; i++) {
+            if (marcador[i] == 1) {
+                campo += lista[i] + " ";
             } else {
                 campo += "_ ";
             }
