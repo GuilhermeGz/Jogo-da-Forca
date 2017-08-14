@@ -61,5 +61,20 @@ public class BancoDePalavrasIT {
                 + "ARROZ LARANJA BISCOITO BOLACHA", result);
     }
 
-
+   @Test
+    public void adicionarPosicaoNaLista(){
+        int  prime = bd.getPalavras().size();
+        bd.adicionarPalavra("Computador");
+        int result = bd.getPalavras().size();
+        Assert.assertEquals( prime+1 , result);
+          
+    }
+    
+    @Test
+    public void verificarAdicaoDaPalavraNaLista(){
+        bd.adicionarPalavra("CPU");
+        String result = bd.getPalavras().get(bd.getPalavras().size()-1);
+        Assert.assertEquals("CPU",result);
+    }
+    
 }
