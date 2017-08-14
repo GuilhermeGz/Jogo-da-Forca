@@ -37,14 +37,14 @@ public class BancoDePalavrasIT {
         String result = bd.removerPalavra("carne");
         Assert.assertEquals("\nPalavra removida", result);
     }
-    
+
     @Test
     public void mostrarListaInicial() {
         String result = bd.mostrarLista();
         Assert.assertEquals(" LEITE QUEIJO BANANA CAJU GOAIBA TOMATE "
                 + "ARROZ LARANJA CARNE BISCOITO BOLACHA", result);
     }
-    
+
     @Test
     public void mostrarListaComAdicaoDePalavra() {
         bd.adicionarPalavra("pokemon");
@@ -52,7 +52,7 @@ public class BancoDePalavrasIT {
         Assert.assertEquals(" LEITE QUEIJO BANANA CAJU GOAIBA TOMATE "
                 + "ARROZ LARANJA CARNE BISCOITO BOLACHA POKEMON", result);
     }
-    
+
     @Test
     public void mostrarListaComRemocaoDePalavra() {
         bd.removerPalavra("carne");
@@ -61,20 +61,34 @@ public class BancoDePalavrasIT {
                 + "ARROZ LARANJA BISCOITO BOLACHA", result);
     }
 
-   @Test
-    public void adicionarPosicaoNaLista(){
-        int  prime = bd.getPalavras().size();
+    @Test
+    public void adicionarPosicaoNaLista() {
+        int prime = bd.getPalavras().size();
         bd.adicionarPalavra("Computador");
         int result = bd.getPalavras().size();
-        Assert.assertEquals( prime+1 , result);
-          
+        Assert.assertEquals(prime + 1, result);
+
+    }
+
+    @Test
+    public void verificarAdicaoDaPalavraNaLista() {
+        bd.adicionarPalavra("CPU");
+        String result = bd.getPalavras().get(bd.getPalavras().size() - 1);
+        Assert.assertEquals("CPU", result);
+    }
+
+    @Test
+    public void removerPosicaoNaLista() {
+        int prime = bd.getPalavras().size();
+        bd.removerPalavra("bolacha");
+        int result = bd.getPalavras().size();
+        Assert.assertEquals(prime - 1, result);
     }
     
     @Test
-    public void verificarAdicaoDaPalavraNaLista(){
-        bd.adicionarPalavra("CPU");
-        String result = bd.getPalavras().get(bd.getPalavras().size()-1);
-        Assert.assertEquals("CPU",result);
+    public void verificarRemocaoDaPalavraNaLista(){
+        bd.removerPalavra("bolacha");
+        boolean result = bd.Palavras.contains("bolacha");
+        Assert.assertFalse(result);
     }
-    
 }
