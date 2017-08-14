@@ -91,4 +91,15 @@ public class BancoDePalavrasIT {
         boolean result = bd.Palavras.contains("bolacha");
         Assert.assertFalse(result);
     }
+    
+    @Test(expected = java.lang.NullPointerException.class)
+    public void verificarRemocaoNula(){
+        bd.removerPalavra(null);
+    }
+    
+     @Test(expected = java.lang.NullPointerException.class)
+    public void verificarAdicaoNula(){
+        bd.adicionarPalavra(null);
+    }
+    
 }
