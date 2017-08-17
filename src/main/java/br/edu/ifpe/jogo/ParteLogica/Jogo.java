@@ -75,7 +75,7 @@ public class Jogo {
         bd = new BancoDePalavras();
     }
 
-    public void inicializarJogo() {
+    public String inicializarJogo(int op) {
         Scanner sc = new Scanner(System.in);
         do {
             int posicao = gerador.nextInt(bd.getPalavras().size());
@@ -83,11 +83,8 @@ public class Jogo {
             letras = palavra.toCharArray();
             marcasao = new int[letras.length];
             letrasRepetidas = new ArrayList<Character>();
-
-            System.out.println("1 - Jogar\n2 - Adicionar palavra\n3 - Remover palavra"
-                    + "\n4 - Mostrar lista de palvras\n5 - Sair do jogo");
-
-            setOpcao(sc.nextInt());
+            
+            setOpcao(op);
 
             if (getOpcao() == 1) {
                 boolean result;
@@ -115,7 +112,7 @@ public class Jogo {
             } else if (getOpcao() != 5) {
                 System.out.println("\nValor inapropriadoz\n");
             }
-
+            return "Jogo Finalizado";
         } while (getOpcao() != 5);
     }
 
@@ -162,4 +159,8 @@ public class Jogo {
         }
     }
 
+    public String mostrarMenu(){
+        return "1 - Jogar\n2 - Adicionar palavra\n3 - Remover palavra"
+                    +"\n4 - Mostrar lista de palvras\n5 - Sair do jogo";
+    }
 }
