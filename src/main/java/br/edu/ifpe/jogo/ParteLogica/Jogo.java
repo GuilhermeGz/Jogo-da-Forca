@@ -15,7 +15,7 @@ public class Jogo {
     int[] marcasao;
     ArrayList<Character> letrasRepetidas;
 
-     public BancoDePalavras getBd() {
+    public BancoDePalavras getBd() {
         return bd;
     }
 
@@ -46,7 +46,7 @@ public class Jogo {
     public void setLetrasRepetidas(ArrayList<Character> letrasRepetidas) {
         this.letrasRepetidas = letrasRepetidas;
     }
-    
+
     public int getErros() {
         return erros;
     }
@@ -92,7 +92,7 @@ public class Jogo {
                 acertos = 0;
 
                 do {
-                    System.out.println(criarCampo(letras,marcasao));
+                    System.out.println(criarCampo(letras, marcasao));
                     System.out.println("\nEscolha uma letra");
                     System.out.println("Erros :" + getErros());
                     char letra = sc.next().toUpperCase().charAt(0);
@@ -145,8 +145,8 @@ public class Jogo {
                 cont = true;
             }
         }
-        if(cont != true){
-        erros++;
+        if (cont != true) {
+            erros++;
         }
         return acertos < letras.length && erros < 7;
     }
