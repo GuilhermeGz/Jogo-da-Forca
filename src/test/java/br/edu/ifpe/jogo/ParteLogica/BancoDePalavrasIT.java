@@ -97,7 +97,7 @@ public class BancoDePalavrasIT {
         bd.removerPalavra(null);
     }
     
-     @Test(expected = java.lang.NullPointerException.class)
+    @Test(expected = java.lang.NullPointerException.class)
     public void verificarAdicaoNula(){
         bd.adicionarPalavra(null);
     }

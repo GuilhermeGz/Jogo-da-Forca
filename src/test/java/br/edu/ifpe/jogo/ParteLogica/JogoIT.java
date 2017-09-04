@@ -84,5 +84,5 @@ public class JogoIT {
         boolean result = jforca.verificarAcerto('L');
         Assert.assertEquals(false, result);
     }
-
-}
+     
+       }
